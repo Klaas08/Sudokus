@@ -11,7 +11,6 @@ class Sudoku:
     def column(self, colNum:int):
         col = []
         for i in range(9):
-            tmp = self.row(i)
             col.append(self.row(i)[colNum])
         return col
     
@@ -30,11 +29,12 @@ class Checker:
         self.sudoku = sudoku
     
     def checkList(self, list):
-        if len(list) != 9:
+        myList = list.copy()
+        if len(myList) != 9:
             return False
         for i in range(9):
-            if i+1 in list:
-                list.remove(i+1)
+            if i+1 in myList:
+                myList.remove(i+1)
             else:
                 return False
         return True
